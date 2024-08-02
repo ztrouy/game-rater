@@ -1,0 +1,142 @@
+[
+    {
+        "model": "raterapi.game",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "title": "Settlers of Catan",
+            "description": "A game of trading and strategy.",
+            "designer": "Klaus Teuber",
+            "year_released": 1995,
+            "number_of_players": 4,
+            "estimated_time_to_play": 90,
+            "age_recommendation": 10
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "title": "Dominion",
+            "description": "A deck-building card game.",
+            "designer": "Donald X. Vaccarino",
+            "year_released": 2008,
+            "number_of_players": 4,
+            "estimated_time_to_play": 30,
+            "age_recommendation": 13
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 3,
+        "fields": {
+            "user": 1,
+            "title": "Ticket to Ride",
+            "description": "A cross-country train adventure.",
+            "designer": "Alan R. Moon",
+            "year_released": 2004,
+            "number_of_players": 5,
+            "estimated_time_to_play": 60,
+            "age_recommendation": 8
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 4,
+        "fields": {
+            "user": 1,
+            "title": "Pandemic",
+            "description": "A cooperative game to stop a global outbreak.",
+            "designer": "Matt Leacock",
+            "year_released": 2008,
+            "number_of_players": 4,
+            "estimated_time_to_play": 45,
+            "age_recommendation": 8
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 5,
+        "fields": {
+            "user": 1,
+            "title": "Gloomhaven",
+            "description": "A tactical combat adventure game.",
+            "designer": "Isaac Childres",
+            "year_released": 2017,
+            "number_of_players": 4,
+            "estimated_time_to_play": 120,
+            "age_recommendation": 14
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 6,
+        "fields": {
+            "user": 1,
+            "title": "Codenames",
+            "description": "A word game with a spy theme.",
+            "designer": "Vlaada Chvátil",
+            "year_released": 2015,
+            "number_of_players": 8,
+            "estimated_time_to_play": 15,
+            "age_recommendation": 14
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 7,
+        "fields": {
+            "user": 1,
+            "title": "Carcassonne",
+            "description": "A tile-placement game.",
+            "designer": "Klaus-Jürgen Wrede",
+            "year_released": 2000,
+            "number_of_players": 5,
+            "estimated_time_to_play": 35,
+            "age_recommendation": 7
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 8,
+        "fields": {
+            "user": 1,
+            "title": "7 Wonders",
+            "description": "A card drafting game.",
+            "designer": "Antoine Bauza",
+            "year_released": 2010,
+            "number_of_players": 7,
+            "estimated_time_to_play": 30,
+            "age_recommendation": 10
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 9,
+        "fields": {
+            "user": 1,
+            "title": "Chess",
+            "description": "A classic abstract strategy game.",
+            "designer": "Unknown",
+            "year_released": 1500,
+            "number_of_players": 2,
+            "estimated_time_to_play": 30,
+            "age_recommendation": 6
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 10,
+        "fields": {
+            "user": 1,
+            "title": "Monopoly",
+            "description": "A classic game of property trading.",
+            "designer": "Elizabeth Magie",
+            "year_released": 1935,
+            "number_of_players": 6,
+            "estimated_time_to_play": 120,
+            "age_recommendation": 8
+        }
+    }
+]
