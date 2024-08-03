@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Authorized from "./Authorized"
+import Games from "../pages/games/Games"
 
 const ApplicationViews = () => {
     return (
@@ -11,7 +12,7 @@ const ApplicationViews = () => {
             <Route element={<Authorized/>}>
                 <Route path="/" element={<>Home View</>}/>
                 <Route path="/games">
-                    <Route index element={<>Games List View</>}/>
+                    <Route index element={<Games/>}/>
                     <Route path="new" element={<>New Game Form View</>}/>
                     <Route path=":gameId">
                         <Route index element={<>Games Details View</>}/>
