@@ -1,0 +1,92 @@
+[
+    {
+        "model": "raterapi.review",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "game": 1,
+            "content": "Great game for strategy lovers!"
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "game": 1,
+            "content": "An absolute classic."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 3,
+        "fields": {
+            "user": 1,
+            "game": 2,
+            "content": "Dominion is the king of deck-building games."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 4,
+        "fields": {
+            "user": 1,
+            "game": 3,
+            "content": "A fun and accessible game for all ages."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 5,
+        "fields": {
+            "user": 1,
+            "game": 4,
+            "content": "Pandemic is a great cooperative experience."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 6,
+        "fields": {
+            "user": 1,
+            "game": 5,
+            "content": "A complex and rewarding tactical game."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 7,
+        "fields": {
+            "user": 1,
+            "game": 6,
+            "content": "A quick and fun party game."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 8,
+        "fields": {
+            "user": 1,
+            "game": 7,
+            "content": "A great introduction to tile-placement games."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 9,
+        "fields": {
+            "user": 1,
+            "game": 8,
+            "content": "7 Wonders is a fantastic drafting game."
+        }
+    },
+    {
+        "model": "raterapi.review",
+        "pk": 10,
+        "fields": {
+            "user": 1,
+            "game": 9,
+            "content": "Chess is the ultimate strategy game."
+        }
+    }
+]
