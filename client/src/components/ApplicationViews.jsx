@@ -3,6 +3,7 @@ import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Authorized from "./Authorized"
 import Games from "../pages/games/Games"
+import GameDetails from "../pages/games/GameDetails"
 
 const ApplicationViews = () => {
     return (
@@ -15,7 +16,7 @@ const ApplicationViews = () => {
                     <Route index element={<Games/>}/>
                     <Route path="new" element={<>New Game Form View</>}/>
                     <Route path=":gameId">
-                        <Route index element={<>Games Details View</>}/>
+                        <Route index element={<GameDetails/>}/>
                         <Route path="edit" element={<>Edit Game Form View</>}/>
                         <Route path="review" element={<>Review Game Form View</>}/>
                         <Route path="screenshot" element={<>New Screenshot Form View</>}/>
