@@ -4,6 +4,7 @@ import Register from "../pages/Register"
 import Authorized from "./Authorized"
 import Games from "../pages/games/Games"
 import GameDetails from "../pages/games/GameDetails"
+import NewGame from "../pages/games/NewGame"
 
 const ApplicationViews = () => {
     return (
@@ -14,7 +15,7 @@ const ApplicationViews = () => {
                 <Route path="/" element={<>Home View</>}/>
                 <Route path="/games">
                     <Route index element={<Games/>}/>
-                    <Route path="new" element={<>New Game Form View</>}/>
+                    <Route path="new" element={<NewGame/>}/>
                     <Route path=":gameId">
                         <Route index element={<GameDetails/>}/>
                         <Route path="edit" element={<>Edit Game Form View</>}/>
