@@ -29,7 +29,10 @@ class GameSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Game
-        fields = ["id", "title", "designer", "description", "yearReleased", "numberOfPlayers", "estimatedTimeToPlay", "ageRecommendation", "isOwner", "categories"]
+        fields = [
+            "id", "title", "designer", "description", "yearReleased", "numberOfPlayers", 
+            "estimatedTimeToPlay", "ageRecommendation", "isOwner", "categories"
+        ]
 
 
 class GameViewSet(viewsets.ViewSet):
@@ -47,3 +50,20 @@ class GameViewSet(viewsets.ViewSet):
 
         except Game.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def create(self, request):
+        game =  Game.objects.create(
+            user = request.user,
+            title = request.data.get("title"),
+            description = request.data.get("description"),
+            designer = request.data.get("designer"),
+            year_released = request.data.get("yearReleased"),
+            number_of_players = request.data.get("numberOfPlayers"),
+            estimated_time_to_play = request.data.get("estimatedTimeToPlay"),
+            age_recommendation = request.data.get("ageRecommendation"))
+
+        category_ids = request.data.get("categories", [])
+        game.categories.set(category_ids)
+
+        serializer = GameSerializer(game, context={"request": request})
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
