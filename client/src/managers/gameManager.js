@@ -9,3 +9,16 @@ export const getGames = () => {
 export const getSingleGame = (id) => {
     return fetch(`${_url}/${id}`, _getAuth).then(res => res.json())
 }
+
+export const createGame = (game) => {
+    const postOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: _token
+        },
+        body: JSON.stringify(game)
+    }
+
+    return fetch(_url, postOptions)
+}
