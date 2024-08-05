@@ -22,3 +22,16 @@ export const createGame = (game) => {
 
     return fetch(_url, postOptions)
 }
+
+export const updateGame = (game) => {
+    const putOptions = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: _token
+        },
+        body: JSON.stringify(game)
+    }
+
+    return fetch(`${_url}/${game.id}`, putOptions)
+}
