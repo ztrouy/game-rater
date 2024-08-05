@@ -25,6 +25,8 @@ const GameForm = () => {
 
         if (gameId) {
             getSingleGame(gameId).then(gameObj => {
+                if (!gameObj.isOwner) navigate(`/games/${gameId}`)
+                
                 gameObj.categories = gameObj.categories.map(c => c.id)
                 setGame(gameObj)
             })
