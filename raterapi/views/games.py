@@ -2,6 +2,7 @@ from rest_framework import viewsets, status, serializers
 from rest_framework.response import Response
 from raterapi.models import Game, Category
 from .categories import CategorySerializer
+from .reviews import ReviewSerializer
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -11,6 +12,7 @@ class GameSerializer(serializers.ModelSerializer):
     estimatedTimeToPlay = serializers.SerializerMethodField()
     ageRecommendation = serializers.SerializerMethodField()
     categories = CategorySerializer(many=True)
+    reviews = ReviewSerializer(many=True, read_only=False)
 
     def get_isOwner(self, obj):
         return self.context["request"].user == obj.user
@@ -31,7 +33,7 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = [
             "id", "title", "designer", "description", "yearReleased", "numberOfPlayers", 
-            "estimatedTimeToPlay", "ageRecommendation", "isOwner", "categories"
+            "estimatedTimeToPlay", "ageRecommendation", "isOwner", "categories", "reviews"
         ]
 
 
