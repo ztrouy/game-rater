@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 import { Button, Form, FormGroup, Input, Label, Spinner } from "reactstrap"
-import { createGame, getSingleGame } from "../../managers/gameManager"
+import { createGame, getSingleGame, updateGame } from "../../managers/gameManager"
 import { getCategories } from "../../managers/categoryManager"
 
 const GameForm = () => {    
@@ -40,7 +40,13 @@ const GameForm = () => {
         }
         
         if (gameId) {
-            console.log("Not implemented!")
+            updateGame(game).then(res => {
+                if (res.status === 204) {
+                    navigate(`/games/${gameId}`)
+                } else {
+                    console.log(res.errors)
+                }
+            })
         } else {
             createGame(game).then(res => {
                 if (res.status === 201) {
