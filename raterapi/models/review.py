@@ -4,7 +4,7 @@ from .game import Game
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="reviews")
     content = models.TextField()
 
     def __str__(self):
