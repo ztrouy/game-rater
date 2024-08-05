@@ -1,6 +1,9 @@
-import { Badge, Card, CardText, CardTitle } from "reactstrap"
+import { useNavigate } from "react-router"
+import { Badge, Button, Card, CardText, CardTitle } from "reactstrap"
 
 const GameCardDetailed = ({ game }) => {
+    const navigate = useNavigate()
+    
     return (
         <Card className="p-3 shadow" outline color="light">
             <CardTitle className="h5 mb-0">{game.title}</CardTitle>
@@ -14,6 +17,11 @@ const GameCardDetailed = ({ game }) => {
             <CardText className="fst-italic">
                 {game.numberOfPlayers} Players - Ages {game.ageRecommendation}+ - {game.estimatedTimeToPlay} Minutes
             </CardText>
+            {game.isOwner && (
+                <div>
+                    <Button onClick={() => navigate("edit")}>Edit</Button>
+                </div>
+            )}
         </Card>
     )
 }
