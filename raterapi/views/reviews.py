@@ -1,6 +1,6 @@
 from rest_framework import viewsets, status, serializers
 from rest_framework.response import Response
-from raterapi.models import Review
+from raterapi.models import Review, Game
 from django.contrib.auth.models import User
 
 
@@ -26,3 +26,18 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ["id", "content", "user", "isOwner"]
+
+
+class ReviewViewSet(viewsets.ViewSet):
+
+    def create(self, request):
+        game_id = request.data.get("gameId")
+        game = Game.objects.get(pk=game_id)
+        
+        review = Review.objects.create(
+            user = request.auth.user,
+            game = game,
+            content = request.data.get("content"))
+
+        serializer = ReviewSerializer(review, context={"request": request})
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
