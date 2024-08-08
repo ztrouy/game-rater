@@ -26,7 +26,7 @@ const GameDetails = () => {
             </div>
             <div className="w-75 mt-2">
                 <h3>Reviews</h3>
-                <div>
+                <div className="mb-3">
                     <Button onClick={() => navigate("review")}>Review Game</Button>
                 </div>
                 <ReviewListSub reviews={game.reviews} />

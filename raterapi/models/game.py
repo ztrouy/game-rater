@@ -17,5 +17,18 @@ class Game(models.Model):
         related_name="books"
     )
 
+    @property
+    def average_rating(self):
+        """Average rating calculated attribute for each game"""
+        ratings = self.ratings.all()
+
+        total_rating = 0
+        for rating in ratings:
+            total_rating += rating.rating
+
+        average_rating = round((total_rating / len(ratings)), 1)
+
+        return average_rating
+
     def __str__(self):
         return f"{self.title} by {self.designer}"

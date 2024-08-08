@@ -6,7 +6,7 @@ const GameCardDetailed = ({ game }) => {
     
     return (
         <Card className="p-3 shadow" outline color="light">
-            <CardTitle className="h5 mb-0">{game.title}</CardTitle>
+            <CardTitle className="h5 mb-0">{game.title} ({game.averageRating})</CardTitle>
             <CardText className="mb-1 mt-0">{game.designer} - {game.yearReleased}</CardText>
             <div className="d-flex flex-row gap-2">
                 {game.categories.map(c => (
