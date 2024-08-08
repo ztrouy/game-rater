@@ -2,18 +2,20 @@ import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { login } from "../managers/userManager"
 import { Button, Form, FormGroup, Input, Label } from "reactstrap"
+import useAuthorizationProvider from "../shared/hooks/authorization/useAuthorizationProvider"
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const existDialog = useRef()
     const navigate = useNavigate()
+    const { setLoggedInUser } = useAuthorizationProvider()
 
     const handleLogin = (event) => {
         event.preventDefault()
-        login({username: email, password: password}).then(authInfo => {
-            if (authInfo.valid) {
-                localStorage.setItem("rater_token", JSON.stringify(authInfo))
+        login({username: email, password: password}).then(user => {
+            if (user) {
+                setLoggedInUser(user)
                 navigate("/")
             } else {
                 existDialog.current.showModal()
