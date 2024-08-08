@@ -5,7 +5,7 @@ const GameCard = ({ game }) => {
     return (
         <Card className="p-3 shadow-sm" outline color="light">
             <NavLink tag={RRNavLink} to={`${game.id}`}>
-                <CardTitle className="h5 mb-0">{game.title}</CardTitle>
+                <CardTitle className="h5 mb-0">{game.title} ({game.averageRating})</CardTitle>
             </NavLink>
             <CardText className="mb-1 mt-0">{game.designer}</CardText>
             <div className="d-flex flex-row gap-2">
