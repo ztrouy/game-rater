@@ -1,8 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom"
 import NavBar from "./NavBar"
+import useAuthorizationProvider from "../shared/hooks/authorization/useAuthorizationProvider"
 
 const Authorized = () => {
-    if (localStorage.getItem("rater_token")) {
+    const { loggedInUser } = useAuthorizationProvider()
+    
+    if (loggedInUser) {
         return (
             <>
                 <NavBar/>
