@@ -1,7 +1,10 @@
 const _url = "http://localhost:8000/categories"
-const _token = `Token ${JSON.parse(localStorage.getItem("rater_token")).token}`
-const _getAuth = {headers: {Authorization: _token}}
+// const token = `Token ${JSON.parse(localStorage.getItem("rater_token")).token}`
+// const auth = {headers: {Authorization: token}}
 
 export const getCategories = () => {
-    return fetch(_url, _getAuth).then(res => res.json())
+    const token = `Token ${JSON.parse(localStorage.getItem("rater_token")).token}`
+    const auth = {headers: {Authorization: token}}
+    
+    return fetch(_url, auth).then(res => res.json())
 }

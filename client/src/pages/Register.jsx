@@ -2,6 +2,7 @@ import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { register } from "../managers/userManager"
 import { Button, Form, FormGroup, Input, Label } from "reactstrap"
+import useAuthorizationProvider from "../shared/hooks/authorization/useAuthorizationProvider"
 
 const Register = () => {
     const [email, setEmail] = useState("")
@@ -10,6 +11,7 @@ const Register = () => {
     const [lastName, setLastName] = useState("")
     const existDialog = useRef()
     const navigate = useNavigate()
+    const { setLoggedInUser } = useAuthorizationProvider()
 
     const handleRegister = (event) => {
         event.preventDefault()
@@ -21,9 +23,9 @@ const Register = () => {
             last_name: lastName
         }
         
-        register(registration).then(authInfo => {
-            if (authInfo && authInfo.token) {
-                localStorage.setItem("rater_token", JSON.stringify(authInfo))
+        register(registration).then(res => {
+            if (!res.errors) {
+                setLoggedInUser(res)
                 navigate("/")
             } else {
                 existDialog.current.showModal()
