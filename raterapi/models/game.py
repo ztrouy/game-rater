@@ -22,6 +22,9 @@ class Game(models.Model):
         """Average rating calculated attribute for each game"""
         ratings = self.ratings.all()
 
+        if not ratings:
+            return None
+        
         total_rating = 0
         for rating in ratings:
             total_rating += rating.rating
