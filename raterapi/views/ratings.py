@@ -1,5 +1,6 @@
 from rest_framework import viewsets, status, serializers
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from raterapi.models import Rating, Game
 
 
@@ -12,6 +13,12 @@ class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = ["id", "rating", "isOwner", "user", "game"]
+
+
+class RatingUpdateSerializer(serializers.ModelSerializer):  
+    class Meta:
+        model = Rating
+        fields = ["id", "rating"]
 
 
 class RatingViewSet(viewsets.ViewSet):
@@ -37,12 +44,15 @@ class RatingViewSet(viewsets.ViewSet):
         serializer = RatingSerializer(rating, context={"request": request})
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    def update(self, request, pk=None):
+    @action(detail=False, methods=["put"], url_path="edit")
+    def edit(self, request):
         try:
-            rating = Rating.objects.get(pk=pk)
+            game_id = request.data.get("gameId")
+            game = Game.objects.get(pk=game_id)
+            rating = Rating.objects.get(game=game, user = request.auth.user)
             self.check_object_permissions(request, rating)
 
-            serializer = RatingSerializer(rating, data=request.data)
+            serializer = RatingUpdateSerializer(rating, data=request.data)
             if serializer.is_valid():
                 rating.rating = serializer.validated_data["rating"]
                 rating.save()
