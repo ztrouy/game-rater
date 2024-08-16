@@ -76,6 +76,7 @@ class GameViewSet(viewsets.ViewSet):
 
     def list(self, request):
         search_text = self.request.query_params.get("q", None)
+        order_text = self.request.query_params.get("orderBy", None)
         
         games = Game.objects.all()
         
@@ -85,6 +86,15 @@ class GameViewSet(viewsets.ViewSet):
                 Q(description__contains=search_text) |
                 Q(designer__contains=search_text)
             )
+
+        order_options = [
+            "year_released", 
+            "estimated_time_to_play", 
+            "designer"
+        ]
+        if order_text in order_options:
+            games = games.order_by(order_text)
+
         serializer = GameSerializer(games, many=True, context={"request": request})
         return Response(serializer.data)
 
