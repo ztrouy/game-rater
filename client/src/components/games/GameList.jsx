@@ -17,22 +17,18 @@ const GameList = () => {
     }
 
     return (
-        <>
-            <div className="mb-3">
-                <InputGroup>
-                    <Input
-                        type="search"
-                        placeholder="Search for Game"
-                        value={query}
-                        onChange={event => setQuery(event.target.value)}
-                    />
-                    <Button onClick={() => handleSearch()}>Search</Button>
-                </InputGroup>
-            </div>
-            <div className="d-flex flex-column gap-3">
-                {games.map(game => (<GameCard game={game}  key={`game-${game.id}`}/>))}
-            </div>
-        </>
+        <div className="d-flex flex-column gap-3">
+            <InputGroup>
+                <Input
+                    type="search"
+                    placeholder="Search for Game"
+                    value={query}
+                    onChange={event => setQuery(event.target.value)}
+                />
+                <Button onClick={() => handleSearch()}>Search</Button>
+            </InputGroup>
+            {games.map(game => (<GameCard game={game}  key={`game-${game.id}`}/>))}
+        </div>
     )
 }
 
