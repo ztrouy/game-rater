@@ -2,11 +2,11 @@ const _url = "http://localhost:8000/games"
 // const token = `Token ${JSON.parse(localStorage.getItem("rater_token")).token}`
 // const auth = {headers: {Authorization: token}}
 
-export const getGames = () => {
+export const getGames = (queryParams = "") => {
     const token = `Token ${JSON.parse(localStorage.getItem("rater_token")).token}`
     const auth = {headers: {Authorization: token}}
     
-    return fetch(_url, auth).then(res => res.json())
+    return fetch(_url + queryParams, auth).then(res => res.json())
 }
 
 export const getSingleGame = (id) => {

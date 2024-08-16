@@ -1,5 +1,6 @@
 from rest_framework import viewsets, status, serializers
 from rest_framework.response import Response
+from django.db.models import Q
 from raterapi.models import Game, Category
 from .categories import CategorySerializer
 from .reviews import ReviewSerializer
@@ -74,7 +75,16 @@ class GameUpdateSerializer(serializers.ModelSerializer):
 class GameViewSet(viewsets.ViewSet):
 
     def list(self, request):
+        search_text = self.request.query_params.get("q", None)
+        
         games = Game.objects.all()
+        
+        if search_text:
+            games = games.filter(
+                Q(title__contains=search_text) |
+                Q(description__contains=search_text) |
+                Q(designer__contains=search_text)
+            )
         serializer = GameSerializer(games, many=True, context={"request": request})
         return Response(serializer.data)
 
